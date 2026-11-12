@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.spring.spring_rest.dto.StudentErrorResponse;
+import com.spring.spring_rest.entity.StudentErrorResponse;
 import com.spring.spring_rest.exception.StudentNotFoundException;
 
 @ControllerAdvice 

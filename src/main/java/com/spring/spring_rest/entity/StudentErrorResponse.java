@@ -1,4 +1,4 @@
-package com.spring.spring_rest.dto;
+package com.spring.spring_rest.entity;
 
 public class StudentErrorResponse {
     private int status;
