@@ -1,5 +1,8 @@
 package com.spring.spring_rest.dto;
 
+/**
+ * Data Transfer Object (DTO) representing error responses.
+ */
 public class StudentErrorResponse {
     private int status;
     private String message;

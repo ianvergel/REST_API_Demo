@@ -1,8 +1,11 @@
 package com.spring.spring_rest.dto;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 
+/**
+ * Data Transfer Object (DTO) representing student 
+ * information for API requests and responses.
+ */
 public class StudentDto {
     private Long id;
 
@@ -19,7 +22,10 @@ public class StudentDto {
 
     }
 
-    public StudentDto(Long id, String firstName, String lastName, String email) {
+    public StudentDto(Long id, 
+                        String firstName, 
+                        String lastName, 
+                        String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

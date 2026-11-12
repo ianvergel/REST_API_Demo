@@ -2,6 +2,10 @@ package com.spring.spring_rest.service;
 import java.util.List;
 import com.spring.spring_rest.dto.StudentDto;
 
+/**
+ * initialization of abstract classes that is 
+ * to be implemented in StudentServiceImplete.java
+ */
 public interface StudentService {
 
     StudentDto createStudent(StudentDto theStudentDto);

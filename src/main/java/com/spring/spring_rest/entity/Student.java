@@ -7,6 +7,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Intializes an entity including the DDL of the Student Table.
+ */
 @Entity 
 @Table(name="student")
 public class Student {

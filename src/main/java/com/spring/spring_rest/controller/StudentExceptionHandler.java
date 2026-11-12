@@ -12,9 +12,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.spring.spring_rest.dto.StudentErrorResponse;
 import com.spring.spring_rest.exception.StudentNotFoundException;
 
+/**
+* Controller implementation of exception handling.
+*/
 @ControllerAdvice 
 public class StudentExceptionHandler {
 
+    /**
+    * Student not Found Exception.
+    */
     @ExceptionHandler 
     public ResponseEntity<StudentErrorResponse> handleException(
         StudentNotFoundException ex) {
@@ -27,6 +33,9 @@ public class StudentExceptionHandler {
             return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
         }
 
+    /**
+    * Invalid parameter exception for characters or out of bounds id number.
+    */
     @ExceptionHandler
     public ResponseEntity<StudentErrorResponse> handleException(Exception ex) {
         StudentErrorResponse err = new StudentErrorResponse();
@@ -38,6 +47,9 @@ public class StudentExceptionHandler {
         return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
     }
 
+    /**
+    * Validation Exception such as complete and unique email, unique id.
+    */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(
         MethodArgumentNotValidException ex) {
