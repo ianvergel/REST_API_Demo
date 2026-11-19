@@ -29,9 +29,28 @@
     },
     {
       "name": "list_of_students",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
       "request": {
         "method": "GET",
-        "header": []
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"firstName\": \"Noelle\",\r\n    \"lastName\": \"Silva\",\r\n    \"email\": \"noelle@clover-kingdom.com\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/students",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "students"
+          ]
+        }
       },
       "response": [
         {
@@ -375,7 +394,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"id\": 10,\r\n    \"firstName\": \"Asta\",\r\n    \"lastName\": \"WizardKing\",\r\n    \"email\": \"asta@clover-kingdom.com\" \r\n}",
+              "raw": "{\r\n    \"firstName\": \"Noelle\",\r\n    \"lastName\": \"Silva\",\r\n    \"email\": \"noelle@clover-kingdom.com\" \r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -409,7 +428,7 @@
             },
             {
               "key": "Date",
-              "value": "Thu, 12 Nov 2026 05:45:58 GMT"
+              "value": "Thu, 19 Nov 2026 06:23:27 GMT"
             },
             {
               "key": "Keep-Alive",
@@ -421,7 +440,7 @@
             }
           ],
           "cookie": [],
-          "body": "{\n    \"id\": 10,\n    \"firstName\": \"Asta\",\n    \"lastName\": \"WizardKing\",\n    \"email\": \"asta@clover-kingdom.com\"\n}"
+          "body": "{\n    \"id\": 5,\n    \"firstName\": \"Noelle\",\n    \"lastName\": \"Silva\",\n    \"email\": \"noelle@clover-kingdom.com\"\n}"
         },
         {
           "name": "add_student_with_validation",
@@ -752,6 +771,114 @@
           ],
           "cookie": [],
           "body": "{\n    \"id\": 14,\n    \"firstName\": \"Noelle\",\n    \"lastName\": \"Silva\",\n    \"email\": \"noelle@clover-kingdom.com\"\n}"
+        },
+        {
+          "name": "invalid_id_put_student",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"Jack\",\r\n    \"lastName\": \"Peasant\",\r\n    \"email\": \"jack@clover-kingdom.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/students/99",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "students",
+                "99"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 19 Nov 2026 06:27:21 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": 404,\n    \"message\": \"Student id 99 not found!\",\n    \"timeStamp\": 1795069641905\n}"
+        },
+        {
+          "name": "invalid_string_put_student",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"Jack\",\r\n    \"lastName\": \"Peasant\",\r\n    \"email\": \"jack@clover-kingdom.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/students/sdasdasd",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "students",
+                "sdasdasd"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 19 Nov 2026 06:28:18 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": 400,\n    \"message\": \"Invalid data. Only integers are accepted\",\n    \"timeStamp\": 1795069698065\n}"
         }
       ]
     },
@@ -783,7 +910,172 @@
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "valid_patch_student",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"ian@clover-kingdom.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/students/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "students",
+                "1"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 19 Nov 2026 06:28:49 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 1,\n    \"firstName\": \"Asta\",\n    \"lastName\": \"WizardKing\",\n    \"email\": \"ian@clover-kingdom.com\"\n}"
+        },
+        {
+          "name": "invalid_id_patch_student",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"ian@clover-kingdom.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/students/99",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "students",
+                "99"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 19 Nov 2026 06:29:06 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": 404,\n    \"message\": \"Student id 99 not found!\",\n    \"timeStamp\": 1795069746254\n}"
+        },
+        {
+          "name": "invalid_string_patch_student",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"ian@clover-kingdom.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/students/asdasdasd",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "students",
+                "asdasdasd"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 19 Nov 2026 06:29:25 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": 400,\n    \"message\": \"Invalid data. Only integers are accepted\",\n    \"timeStamp\": 1795069765306\n}"
+        }
+      ]
     },
     {
       "name": "delete_student",
@@ -859,6 +1151,104 @@
           ],
           "cookie": [],
           "body": "Student deleted successfully!"
+        },
+        {
+          "name": "invalid_id_delete_student",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"ian@clover-kingdom.com\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/students/99",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "students",
+                "99"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 19 Nov 2026 06:30:04 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": 404,\n    \"message\": \"Student id 99 not found!\",\n    \"timeStamp\": 1795069804506\n}"
+        },
+        {
+          "name": "invalid_string_delete_student",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"ian@clover-kingdom.com\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/students/asdasdasd",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "students",
+                "asdasdasd"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 19 Nov 2026 06:30:18 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": 400,\n    \"message\": \"Invalid data. Only integers are accepted\",\n    \"timeStamp\": 1795069818909\n}"
         }
       ]
     }
